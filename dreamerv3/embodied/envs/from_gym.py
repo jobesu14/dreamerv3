@@ -78,7 +78,7 @@ class FromGym(embodied.Env):
     return obs
 
   def render(self):
-    image = self._env.render('rgb_array')
+    image = self._env.render() # 'rgb_array')
     assert image is not None
     return image
 

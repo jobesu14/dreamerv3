@@ -1,3 +1,22 @@
+# Installation notes
+
+## Cuda + cudnn
+
+My cuda version (```nvcc --version```) is 11.7
+My cudnn version (```dpkg -l | grep -i cudnn```) is 8.8.0.121-1+cuda11.8 because impossible to install the version
+8.8.0.121-1+cuda11.7 that correspond to my cuda version...
+See [here for cudnn install instructions](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#installlinux-deb)
+
+## Jax
+
+Make sure to set below the corresponding major version of cuda and major+minor version of cudnn when installing jax.
+(Also, I had to force version of jax to 0.4.3, but not sure it is needed... -> see requirements.txt)
+
+```
+pip install "jax[cuda11_cudnn88]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+```
+
+
 # Mastering Diverse Domains through World Models
 
 A reimplementation of [DreamerV3][paper], a scalable and general reinforcement
