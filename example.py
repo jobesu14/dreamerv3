@@ -19,6 +19,7 @@ def main():
       'encoder.cnn_keys': 'image',
       'decoder.cnn_keys': 'image',
       # 'jax.platform': 'cpu',
+      "run.save_every": 30  # Seconds
   })
   config = embodied.Flags(config).parse()
 
