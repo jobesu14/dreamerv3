@@ -4,7 +4,7 @@ import embodied
 import numpy as np
 
 
-def eval_only(agent, env, logger, args):
+def eval_only(agent, env, logger, args, on_step_callback=None):
 
   logdir = embodied.Path(args.logdir)
   logdir.mkdirs()
@@ -45,6 +45,8 @@ def eval_only(agent, env, logger, args):
   driver = embodied.Driver(env)
   driver.on_episode(lambda ep, worker: per_episode(ep))
   driver.on_step(lambda tran, _: step.increment())
+  if on_step_callback is not None:
+    driver.on_step(on_step_callback)
 
   checkpoint = embodied.Checkpoint()
   checkpoint.agent = agent
